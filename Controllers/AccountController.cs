@@ -10,25 +10,27 @@ namespace hngstageone.Controllers
     {
         private readonly ITokenService _tokenService;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IConfiguration _config;
 
-        public AccountController(ITokenService tokenService, SignInManager<AppUser> signInManager)
+        public AccountController(ITokenService tokenService, SignInManager<AppUser> signInManager, IConfiguration config)
         {
             _tokenService = tokenService;
             _signInManager = signInManager;
+            _config = config;
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login (LoginDto loginDto)
         {
-            var userName = loginDto.Username;
-            var password = loginDto.Password;
+            var userName = _config["UserCredentials:Email"];
+            var password = _config["UserCredentials:Password"];
 
-            if ((userName != "oyeks@email.com") || (password != "Password@1")) return BadRequest("Username or Password is not correct");
+            if ((loginDto.Username != userName) || (loginDto.Password != password)) return BadRequest("Username or Password is not correct");
 
             var user = new AppUser
             {
-                Email = "oyeks@email.com",
-                PasswordHash = "Password@1"
+                Email = userName,
+                PasswordHash = password
             };
 
             return Ok(
