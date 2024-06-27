@@ -1,8 +1,8 @@
-﻿using hngstageone.Entities;
+﻿using API.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace hngstageone.Data
+namespace API.Data
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {

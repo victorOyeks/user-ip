@@ -1,10 +1,10 @@
-﻿using hngstageone.Dto;
-using hngstageone.Entities;
-using hngstageone.Interfaces;
+﻿using API.Dto;
+using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace hngstageone.Controllers
+namespace API.Controllers
 {
     public class AccountController : ControllerBase
     {

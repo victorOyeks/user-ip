@@ -1,6 +1,6 @@
-﻿using hngstageone.Dto;
+﻿using API.Dto;
 
-namespace hngstageone.Interfaces
+namespace API.Interfaces
 {
     public interface IGreetingsRepository
     {

@@ -1,7 +1,7 @@
-﻿using hngstageone.Interfaces;
+﻿using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace hngstageone.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("/api/hello")]

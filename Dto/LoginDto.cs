@@ -1,5 +1,5 @@
 ﻿
-namespace hngstageone.Dto
+namespace API.Dto
 {
     public class LoginDto
     {

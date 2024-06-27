@@ -1,6 +1,6 @@
-﻿using hngstageone.Entities;
+﻿using API.Entities;
 
-namespace hngstageone.Interfaces
+namespace API.Interfaces
 {
     public interface ITokenService
     {

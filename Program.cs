@@ -1,7 +1,7 @@
-using hngstageone.Data;
-using hngstageone.Entities;
-using hngstageone.Interfaces;
-using hngstageone.Services;
+using API.Data;
+using API.Entities;
+using API.Interfaces;
+using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

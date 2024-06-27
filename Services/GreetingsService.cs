@@ -1,7 +1,7 @@
-﻿using hngstageone.Dto;
-using hngstageone.Interfaces;
+﻿using API.Dto;
+using API.Interfaces;
 
-namespace hngstageone.Services
+namespace API.Services
 {
     public class GreetingsService : IGreetingsRepository
     {

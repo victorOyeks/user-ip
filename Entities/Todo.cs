@@ -1,4 +1,4 @@
-﻿namespace hngstageone.Entities
+﻿namespace API.Entities
 {
     public class Todo
     {

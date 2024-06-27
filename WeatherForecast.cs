@@ -1,4 +1,4 @@
-namespace hngstageone
+namespace API
 {
     public class WeatherForecast
     {

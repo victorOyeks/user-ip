@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace hngstageone.Entities
+namespace API.Entities
 {
     public class AppUser : IdentityUser
     {

@@ -482,5 +482,4 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
-hngstageone/appsettings.json
-#API/appsettings.json
+API/appsettings.json
