@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using API.Dto;
 using static System.Net.WebRequestMethods;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace API.Services
 {
@@ -22,6 +23,8 @@ namespace API.Services
         {
             var ip = await GetIp();
             var userLocation =  await GetUserLocation(ip);
+            var userWeather = await GetUserWeather(userLocation);
+
             return new GreetingDto
             {
                 ClientIp = ip,
@@ -73,6 +76,19 @@ namespace API.Services
                 Console.WriteLine($"Error fetching user location: {ex.Message}");
                 return "Unknown";
             }
+        }
+
+        private async Task<double> GetUserWeather(string location)
+        {
+            var response = await _httpClient.GetStringAsync($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?key=PJT7TQMBACYBW9EECVMAJYDWL");
+
+            var jsonResponse = JObject.Parse(response);
+
+            var temperatureFahrenheit = (double)jsonResponse["days"][0]["temp"];
+
+            var temperatureCelsius = (temperatureFahrenheit - 32) * 5 / 9;
+
+            return temperatureCelsius;
         }
     }
 }
