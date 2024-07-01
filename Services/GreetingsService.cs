@@ -29,7 +29,7 @@ namespace API.Services
             {
                 ClientIp = ip,
                 Location = userLocation,
-                Greeting = "Hello, " + name + "!"
+                Greeting = ($"Hello, {name}!, the temperature is {userWeather} degrees Celcius in {userLocation}")
             };
         }
 
