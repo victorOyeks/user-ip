@@ -33,6 +33,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IGreetingsRepository, GreetingsService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<SpotifyService>();
+builder.Services.AddHttpClient();
 
 var Configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDbContext>(options =>

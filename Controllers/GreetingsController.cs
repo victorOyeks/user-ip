@@ -15,8 +15,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-
-        public async Task<IActionResult> Greet([FromQuery]string visitor_name)
+        public async Task<IActionResult> Greet([FromQuery] string visitor_name)
         {
             var greeting = await _greetingsRepository.GreetAsync(visitor_name);
             return Ok(greeting);
