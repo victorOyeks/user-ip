@@ -27,9 +27,9 @@ namespace API.Services
 
             return new GreetingDto
             {
-                ClientIp = ip,
+                Client_ip = ip,
                 Location = userLocation,
-                Greeting = ($"Hello, {name}!, the temperature is {userWeather} degrees Celcius in {userLocation}")
+                Greeting = $"Hello, {name}!, the temperature is {userWeather} degrees Celcius in {userLocation}"
             };
         }
 
