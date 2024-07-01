@@ -20,7 +20,7 @@ namespace API.Services
 
         public async Task<GreetingDto> GreetAsync(string name)
         {
-            var ip = GetIp();
+            var ip = await GetIp();
             var userLocation =  await GetUserLocation(ip);
             return new GreetingDto
             {
@@ -30,11 +30,26 @@ namespace API.Services
             };
         }
 
-        private string GetIp()
+        private Task<string> GetIp()
         {
-            var ip = _httpContextAccessor.HttpContext?.Connection.RemoteIpAddress;
-            return ip?.ToString();
+            var context = _httpContextAccessor.HttpContext;
+            string ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+            if (!string.IsNullOrEmpty(ip))
+            {
+                ip = ip.Split(',').First().Trim();
+
+            }
+            else
+            {
+                ip = context.Connection.RemoteIpAddress.ToString();
+                if (ip == "::1")
+                {
+                    ip = "127.0.0.1";
+                }
+            }
+            return Task.FromResult(ip);
         }
+    
 
         private async Task<string> GetUserLocation(string ip)
         {
