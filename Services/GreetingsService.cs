@@ -60,8 +60,6 @@ namespace API.Services
             return Task.FromResult(ip);
         }
 
-
-
         private async Task<string> GetUserLocation(string ip)
         {
             try
