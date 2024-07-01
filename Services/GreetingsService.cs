@@ -76,17 +76,19 @@ namespace API.Services
             }
         }
 
-        private async Task<double> GetUserWeather(string location)
+        private async Task<string> GetUserWeather(string location)
         {
             var response = await _httpClient.GetStringAsync($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?key=PJT7TQMBACYBW9EECVMAJYDWL");
 
             var jsonResponse = JObject.Parse(response);
 
-            var temperatureFahrenheit = (double)jsonResponse["days"][0]["temp"];
+            var temperatureFahrenheit = (double)jsonResponse["days"][0]["temp"]; 
 
-            var temperatureCelsius = (temperatureFahrenheit - 32) * 5 / 9;
+            var temperatureCelsius = Math.Round((temperatureFahrenheit - 32) * 5 / 9, 2);
 
-            return temperatureCelsius;
+            var formattedTemperature = temperatureCelsius.ToString("0.00");
+
+            return formattedTemperature;
         }
     }
 }
