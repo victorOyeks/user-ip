@@ -18,4 +18,4 @@ WORKDIR /app
 COPY --from=build /app .
 
 # Set the entry point for the container
-ENTRYPOINT ["dotnet", "hngstageone.dll"]
+ENTRYPOINT ["dotnet", "api.dll"]
