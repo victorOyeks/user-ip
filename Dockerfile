@@ -8,14 +8,14 @@ RUN dotnet restore
 
 # Copy the remaining source code and build the app
 COPY . ./
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish -c Release -o /app/publish
 
 # Use the official ASP.NET Core runtime image for the runtime environment
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
 
 # Copy the build output from the previous stage
-COPY --from=build /app .
+COPY --from=build /app/publish .
 
 # Set the entry point for the container
-ENTRYPOINT ["dotnet", "api.dll"]
+ENTRYPOINT ["dotnet", "API.dll"]
