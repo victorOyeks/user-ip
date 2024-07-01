@@ -34,10 +34,10 @@ namespace API.Services
         {
             var context = _httpContextAccessor.HttpContext;
             string ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault();
+
             if (!string.IsNullOrEmpty(ip))
             {
                 ip = ip.Split(',').First().Trim();
-
             }
             else
             {
@@ -47,9 +47,17 @@ namespace API.Services
                     ip = "127.0.0.1";
                 }
             }
+
+            // Convert IPv6-mapped IPv4 address to regular IPv4
+            if (ip.StartsWith("::ffff:"))
+            {
+                ip = ip.Substring(7);
+            }
+
             return Task.FromResult(ip);
         }
-    
+
+
 
         private async Task<string> GetUserLocation(string ip)
         {
